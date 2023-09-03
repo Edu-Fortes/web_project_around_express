@@ -1,0 +1,19 @@
+{
+  "name": "around-express_ptbr",
+  "version": "1.0.0",
+  "description": "Backend project from TripleTen Webdev Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Edu-Fortes/around-express_ptbr.git"
+  },
+  "author": "Eduardo Morikuni Fortes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Edu-Fortes/around-express_ptbr/issues"
+  },
+  "homepage": "https://github.com/Edu-Fortes/around-express_ptbr#readme"
+}
