@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 
   fs.readFile(filePath, "utf8", (error, data) => {
     if (error) {
-      console.log("Error reading file: ", error);
+      console.error("Error reading file: ", error);
       return;
     }
     const teste = JSON.parse(data); // PRECISA EXCLUIR ESSA CONST QUANDO ENVIAR PROJETO
