@@ -4,20 +4,40 @@ const fs = require("fs");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.use((req, res, next) => {
   const filePath = path.join(
     `${path.dirname(require.main.filename)}`,
     "/data/users.json"
   );
 
-  fs.readFile(filePath, "utf8", (error, data) => {
+  fs.readFile(filePath, "utf8", (error, rawData) => {
     if (error) {
-      console.error("Error reading file: ", error);
+      res.status(500).send({ message: "Could not read file" });
       return;
     }
-    const teste = JSON.parse(data); // PRECISA EXCLUIR ESSA CONST QUANDO ENVIAR PROJETO
-    res.send(teste); // MUDAR PARA DATA
+    const prettyData = JSON.parse(rawData);
+    res.users = prettyData;
+    next();
   });
 });
+
+const doesUserExist = (req, res) => {
+  const { users } = res;
+  const { id } = req.params;
+  const existUser = users.find((user) => user._id === id);
+
+  if (!existUser) {
+    return res.status(404).send({ message: "ID do usuátio não encontrado" });
+  }
+  return res.status(200).send(existUser);
+};
+
+// All users object response
+router.get("/users", (req, res) => {
+  res.status(200).send(res.users);
+});
+
+// User by ID
+router.get("/users/:id", doesUserExist);
 
 module.exports = router;
