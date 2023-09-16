@@ -42,7 +42,9 @@ router.get("/users", (req, res) => {
 router.get("/users/:id", doesUserExist);
 
 router.post("/users", (req, res) => {
-  User.create(req.body);
+  const { name, about, avatar } = req.body;
+  User.create({ name, about, avatar });
+  res.send(req.body);
 });
 
 module.exports = router;

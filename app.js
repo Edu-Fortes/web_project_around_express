@@ -10,6 +10,8 @@ const cards = require("./routes/cards");
 
 mongoose.connect("mongodb://localhost:27017/aroundb");
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.status(404).send({ message: "A solicitação não foi encontrada" });
 });
