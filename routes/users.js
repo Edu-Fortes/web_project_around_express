@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const User = require("../models/user");
 
 const router = express.Router();
 
@@ -39,5 +40,9 @@ router.get("/users", (req, res) => {
 
 // User by ID
 router.get("/users/:id", doesUserExist);
+
+router.post("/users", (req, res) => {
+  User.create(req.body);
+});
 
 module.exports = router;
