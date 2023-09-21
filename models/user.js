@@ -17,9 +17,9 @@ const userSchema = new Schema(
       maxlength: 30,
     },
     avatar: {
-      // PRECISA USAR EXPRESSÃO REGULAR PARA VALIDAR LINK
       type: String,
       required: true,
+      match: [/^https?:\/\//, "{VALUE} não é um endereço URL válido"],
     },
   },
   { versionKey: false }
