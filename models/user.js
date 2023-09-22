@@ -19,7 +19,7 @@ const userSchema = new Schema(
     avatar: {
       type: String,
       required: true,
-      match: [/^https?:\/\//, "{VALUE} não é um endereço URL válido"],
+      match: /^https?:\/\/(www\.)?([-.~:/?#[\]@!$&'()*+,;=\w]*#?)/gi,
     },
   },
   { versionKey: false }
