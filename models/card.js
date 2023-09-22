@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const userSchema = require("./user");
-
 const { Schema, model } = mongoose;
 
 const cardSchema = new Schema(
@@ -15,17 +13,25 @@ const cardSchema = new Schema(
     link: {
       type: String,
       required: true,
-      owner: {
-        type: ObjectId,
-        required: true,
-      },
-      likes: [
-        {
-          type: userSchema,
-          default: undefined,
-        },
-      ],
+      match: /^https?:\/\/(www\.)?([-.~:/?#[\]@!$&'()*+,;=\w]*#?)/gi,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
+    likes: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+      default: [],
+    },
+    createAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   { versionKey: false }
 );
+
+module.exports = model("card", cardSchema);
