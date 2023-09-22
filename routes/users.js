@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const User = require("../models/user");
-const { getUsers } = require("../controllers/users");
+const { getUsers, createUser } = require("../controllers/users");
 
 const router = express.Router();
 
@@ -40,11 +40,6 @@ router.get("/users", getUsers);
 // User by ID
 router.get("/users/:id", doesUserExist);
 
-router.post("/users", (req, res) => {
-  const { name, about, avatar } = req.body;
-  User.create({ name, about, avatar })
-    .then((user) => res.send(user))
-    .catch(() => res.status(400).send({ messagem: "Error" }));
-});
+router.post("/users", createUser);
 
 module.exports = router;
