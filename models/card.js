@@ -20,12 +20,13 @@ const cardSchema = new Schema(
       ref: "user",
       required: true,
     },
-    likes: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
-      required: true,
-      default: [],
-    },
+    likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        default: [],
+      },
+    ],
     createAt: {
       type: Date,
       default: Date.now,
