@@ -1,38 +1,17 @@
 const express = require("express");
-const path = require("path");
-const fs = require("fs");
+// const path = require("path");
+// const fs = require("fs");
 const User = require("../models/user");
-const { getUsers, createUser } = require("../controllers/users");
+const { getUsers, createUser, doesUserExist } = require("../controllers/users");
 
 const router = express.Router();
 
-router.use((req, res, next) => {
-  const filePath = path.join(
-    `${path.dirname(require.main.filename)}`,
-    "/data/users.json"
-  );
-
-  fs.readFile(filePath, "utf8", (error, rawData) => {
-    if (error) {
-      res.status(500).send({ message: "Could not read file" });
-      return;
-    }
-    const prettyData = JSON.parse(rawData);
-    res.users = prettyData;
-    next();
-  });
+router.use(async (req, res, next) => {
+  const users = await User.find({});
+  console.log("logando users:", users);
+  res.users = users;
+  next();
 });
-
-const doesUserExist = (req, res) => {
-  const { users } = res;
-  const { id } = req.params;
-  const existUser = users.find((user) => user._id === id);
-
-  if (!existUser) {
-    return res.status(404).send({ message: "ID do usuátio não encontrado" });
-  }
-  return res.status(200).send(existUser);
-};
 
 // All users object response
 router.get("/users", getUsers);
@@ -40,6 +19,6 @@ router.get("/users", getUsers);
 // User by ID
 router.get("/users/:id", doesUserExist);
 
+// Create new user
 router.post("/users", createUser);
-
 module.exports = router;
