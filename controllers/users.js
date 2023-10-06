@@ -15,7 +15,7 @@ module.exports = {
     const existUser = users.find((user) => user._id.toString() === id);
 
     if (!existUser) {
-      return res.status(404).send({ message: "ID do usuátio não encontrado" });
+      return res.status(404).send({ message: "User ID not found" });
     }
     return res.status(200).send(existUser);
   },
