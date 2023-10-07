@@ -29,4 +29,30 @@ module.exports = {
       res.status(404).send(error.message);
     }
   },
+  addLike: async (req, res) => {
+    try {
+      await Card.findByIdAndUpdate(
+        req.params.cardId,
+        {
+          $addToSet: { likes: req.user._id },
+        },
+        { new: true }
+      ).orFail();
+      res.status(200).send({ message: "Card liked" });
+    } catch (error) {
+      res.status(404).send(error.message);
+    }
+  },
+  dislike: async (req, res) => {
+    try {
+      await Card.findByIdAndUpdate(
+        req.params.cardId,
+        { $pull: { likes: req.user._id } },
+        { new: true }
+      ).orFail();
+      res.status(200).send({ message: "Card disliked" });
+    } catch (error) {
+      res.status(404).send(error.message);
+    }
+  },
 };

@@ -34,7 +34,7 @@ module.exports = {
           new: true,
           runValidators: true,
         }
-      );
+      ).orFail();
       res.status(200).send(updatedUser);
     } catch (error) {
       res.status(400).send({ message: error.message });
@@ -48,7 +48,7 @@ module.exports = {
         _id,
         { avatar },
         { new: true, runValidators: true }
-      );
+      ).orFail();
       res.status(200).send(updateAvatar);
     } catch (error) {
       res.status(400).send({ message: error.message });
