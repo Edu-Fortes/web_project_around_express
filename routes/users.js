@@ -5,9 +5,15 @@ const { getUsers, createUser, doesUserExist } = require("../controllers/users");
 const router = express.Router();
 
 router.use(async (req, res, next) => {
-  const users = await User.find({});
-  res.users = users;
-  next();
+  try {
+    const users = await User.find().orFail(
+      () => new Error("File could not be found")
+    );
+    res.users = users;
+    next();
+  } catch (error) {
+    res.status(404).send({ messagem: error.message });
+  }
 });
 
 // All users object response

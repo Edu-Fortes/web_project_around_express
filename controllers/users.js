@@ -6,8 +6,12 @@ module.exports = {
   },
   createUser: async (req, res) => {
     const { name, about, avatar } = req.body;
-    const newUser = await User.create({ name, about, avatar });
-    return res.send(newUser);
+    try {
+      const newUser = await User.create({ name, about, avatar });
+      res.send(newUser);
+    } catch (error) {
+      res.status(500).send({ message: error.message });
+    }
   },
   doesUserExist: async (req, res) => {
     const { users } = res;
