@@ -23,4 +23,21 @@ module.exports = {
     }
     return res.status(200).send(existUser);
   },
+  updateUser: async (req, res) => {
+    try {
+      const me = req.user._id;
+      const { name, about, avatar } = req.body;
+      const updatedUser = await User.findByIdAndUpdate(
+        me,
+        { name, about, avatar },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+      res.send(updatedUser);
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  },
 };

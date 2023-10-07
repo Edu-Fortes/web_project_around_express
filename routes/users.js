@@ -1,9 +1,18 @@
 const express = require("express");
 const User = require("../models/user");
-const { getUsers, createUser, doesUserExist } = require("../controllers/users");
+const {
+  getUsers,
+  createUser,
+  doesUserExist,
+  updateUser,
+} = require("../controllers/users");
 
 const router = express.Router();
 
+// Create new user
+router.post("/users", createUser);
+
+// Get users list from database
 router.use(async (req, res, next) => {
   try {
     const users = await User.find().orFail(
@@ -22,7 +31,7 @@ router.get("/users", getUsers);
 // User by ID
 router.get("/users/:id", doesUserExist);
 
-// Create new user
-router.post("/users", createUser);
+// Update user info
+router.patch("/users/me", updateUser);
 
 module.exports = router;
