@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.status(404).send({ message: "A solicitação não foi encontrada" });
+  res.status(404).send({ message: "Request could not be found" });
 });
 
 app.use("/", users);
