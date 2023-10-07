@@ -4,7 +4,8 @@ const {
   getUsers,
   createUser,
   doesUserExist,
-  updateUser,
+  updateUserInfo,
+  updateAvatar,
 } = require("../controllers/users");
 
 const router = express.Router();
@@ -32,6 +33,9 @@ router.get("/users", getUsers);
 router.get("/users/:id", doesUserExist);
 
 // Update user info
-router.patch("/users/me", updateUser);
+router.patch("/users/me", updateUserInfo);
+
+// Update user avatar
+router.patch("/users/me/avatar", updateAvatar);
 
 module.exports = router;

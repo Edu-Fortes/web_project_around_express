@@ -2,13 +2,13 @@ const User = require("../models/user");
 
 module.exports = {
   getUsers: async (req, res) => {
-    res.send(res.users);
+    res.status(200).send(res.users);
   },
   createUser: async (req, res) => {
     const { name, about, avatar } = req.body;
     try {
       const newUser = await User.create({ name, about, avatar });
-      res.send(newUser);
+      res.status(200).send(newUser);
     } catch (error) {
       res.status(500).send({ message: error.message });
     }
@@ -23,19 +23,33 @@ module.exports = {
     }
     return res.status(200).send(existUser);
   },
-  updateUser: async (req, res) => {
+  updateUserInfo: async (req, res) => {
     try {
       const me = req.user._id;
-      const { name, about, avatar } = req.body;
+      const { name, about } = req.body;
       const updatedUser = await User.findByIdAndUpdate(
         me,
-        { name, about, avatar },
+        { name, about },
         {
           new: true,
           runValidators: true,
         }
       );
-      res.send(updatedUser);
+      res.status(200).send(updatedUser);
+    } catch (error) {
+      res.status(400).send({ message: error.message });
+    }
+  },
+  updateAvatar: async (req, res) => {
+    try {
+      const { _id } = req.user;
+      const { avatar } = req.body;
+      const updateAvatar = await User.findByIdAndUpdate(
+        _id,
+        { avatar },
+        { new: true, runValidators: true }
+      );
+      res.status(200).send(updateAvatar);
     } catch (error) {
       res.status(400).send({ message: error.message });
     }
