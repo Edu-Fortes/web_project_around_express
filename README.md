@@ -1,34 +1,3 @@
-<!-- # Around the U.S. - Back End
-
-This project aims on the back-end side of "The Around U.S" webpage. When fully coded, the server will be able to verify tokens, to save and to return cards and to remember if an user liked or not an given card. The hole objective is to create a server with an API and user autenthication.
-
-In this project I had the oportunity to develop my knowledge with database, how to teste and cofigure validation and to deploy the server in a remote machine.
-
-You can check my front-end version of the page made using React.js at [https://edu-fortes.github.io/around-react_ptbr/](https://edu-fortes.github.io/around-react_ptbr/)
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-## Running the Project
-
-`npm run start` — to launch the server.
-
-`npm run dev` — to launch the server with the hot reload feature. -->
-
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-
-<a name="readme-top"></a>
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center" >
