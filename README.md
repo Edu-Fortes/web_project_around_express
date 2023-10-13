@@ -31,9 +31,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
+<div align="center" >
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/svg_logo.svg" alt="Logo" width="300" height="80">
+    <img src="images/svg_logo.svg" alt="Around the U.S project logo" width="300" height="80" style="background-color:black; border-radius:5px; box-shadow: 9px 9px 19px -6px rgba(0,0,0,0.53); padding: 1rem">
   </a>
 
 <h3 align="center">BACK-END</h3>
@@ -61,11 +61,7 @@ These instructions will get you a copy of the project up and running on your loc
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -75,7 +71,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-This project aims on the back-end side of "The Around U.S" webpage. When fully coded, the server will be able to verify tokens, to save and to return cards and to remember if an user liked or not an given card. The hole objective is to create a server with an API and user autenthication.
+This project aims on the back-end side of "The Around U.S" WebApp. When fully coded, the server will be able to verify tokens, to save and to return cards and to remember if an user liked or not an given card. The hole objective is to create a server with an API and user autenthication.
 
 In this project I had the oportunity to develop my knowledge with database, how to teste and cofigure validation and to deploy the server in a remote machine.
 
@@ -97,27 +93,31 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-You will need an API client to make the required requests and visualize response. You can use [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/).
+- You will need an API client to make the required requests and visualize response. You can use [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/).
 
-MongoDB. You can install the community version at [https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)
+![Postman screenshot ](./images/gh-readme/Postman__structure.jpg)
 
-Node.js and Node Package Manager (npm). If not installed, follow the address to install it ([https://nodejs.org/en](https://nodejs.org/en)).
+- MongoDB with a database conected on _'**mongodb://localhost:27017/**'_. You can install the MongoDB community version at [https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)
 
-To check if you have Node.js and NPM installed run the following in your terminal:
+![MongoDB screenshot with conection address](./images/gh-readme/mongoDb_conection.jpg)
 
-- node
+- Node.js and Node Package Manager (npm). If not installed, follow the address to install it ([https://nodejs.org/en](https://nodejs.org/en)).
 
-  ```sh
-  node -v
-  ```
+  To check if you have Node.js and NPM installed run the following in your terminal:
 
-  Expected to return your Node version.
+  - node
 
-- npm
-  ```sh
-  npm -v
-  ```
-  Expected to return your NPM version.
+    ```sh
+    node -v
+    ```
+
+    Expected to return your Node version.
+
+  - npm
+    ```sh
+    npm -v
+    ```
+    Expected to return your NPM version.
 
 ### Installation
 
@@ -127,7 +127,7 @@ To check if you have Node.js and NPM installed run the following in your termina
    git clone https://github.com/github_username/repo_name.git
    ```
 3. Change to cloned folder
-4. Install NPM packages
+4. Install NPM packages dependencies
    ```sh
    npm install
    ```
