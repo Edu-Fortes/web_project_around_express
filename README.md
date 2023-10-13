@@ -136,24 +136,73 @@ To check if you have Node.js and NPM installed run the following in your termina
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To lauch the server execute:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+```sh
+npm run start
+```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+To lauch the server in development mode with the hot reload active, execute:
 
-<!-- ROADMAP -->
+```sh
+npm run dev
+```
 
-## Roadmap
+In either way, the server is going to lauch on port _3000_. Use _http://localhost:3000_ as base URL address to make HTTP requests using _Postman/Insomnia_.
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+### Endpoint to users:
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+`GET /users` - returns users document from MongoDB. First you need to create an user to populate this document, else it is going to return an error message.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+`GET /users/:userId` - returns an user by ID. Replace `:userId` by user ID.
+
+![Postman screenshot with GET request on users/ID](./images/gh-readme/Postman__user_ID.jpg)
+
+`POST /users` - creates a new user. Must pass a JSON on body request with `name` and `about`, like this:
+
+    {
+      "name": "Some name",
+      "about": "Some work description",
+    }
+
+![Postman screenshot with POST request](./images/gh-readme/Postman__user_create.jpg)
+
+`PATCH /users/me` - updates profile. Pass a JSON body request with `name` and `about`.
+
+![Postman screenshot with PATCH request](./images/gh-readme/Postman__user_patch_info.jpg)
+
+`PATCH /users/me/avatar` - updates avatar. Pass a JSON body request with `avatar` containing an image URL:
+
+    {
+      "avatar": "http://YOUR__IMAGE__URL.com"
+    }
+
+![Postman screenshot with PATCH request on avatar endpoint](./images/gh-readme/Postman__user_patch_avatar.jpg)
+
+### Endpoints to cards:
+
+`GET /cards` - returns cards document from MongoDB. You need to create some cards to populate this document, else it is going to return an error message.
+
+![Postman screenshot with GET request on /cards](./images/gh-readme/Postman__get_cards.jpg)
+
+`POST /cards` - creates a new card. Pass a JSON body request with `name` and `link`:
+
+    {
+      "name": "Name of the card",
+      "link": "https://URL__to__image.com"
+    }
+
+![Postman screenshot with POST request on /cards](./images/gh-readme/Postman__create_card.jpg)
+
+`DELETE /cards/:cardId`: deletes a card by ID. Replace `:cardId` with the card ID.
+
+![Postman screenshot with DELETE request to /cards/ID](./images/gh-readme/Postman__deleted-card.jpg)
+
+`PUT /cards/:cardId/likes` - like a card. Replace `:cardId` by card ID to be liked.
+
+`DELETE /cards/:cardId/likes` - dislike a card. Replace `:cardId` by card ID to be dislike.
+
+If something gets wrong with your request, is supposed to the server to return an HTTP status code and an error message in JSON format.
 
 <!-- CONTRIBUTING -->
 
@@ -165,38 +214,26 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+
+2. Create your Feature Branch
+
+```sh
+git checkout -b feature/AmazingFeature
+```
+
+3. Commit your Changes
+
+```sh
+git commit -m 'Add some AmazingFeature'
+```
+
+4. Push to the Branch
+
+```sh
+git push origin feature/AmazingFeature
+```
+
 5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
-
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-- []()
-- []()
-- []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
