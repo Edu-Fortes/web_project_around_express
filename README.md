@@ -36,9 +36,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+## About The Project 
 
 This project aims on the back-end side of "The Around U.S" WebApp. When fully coded, the server will be able to verify tokens, to save and to return cards and to remember if an user liked or not an given card. The hole objective is to create a server with an API and user autenthication.
 
