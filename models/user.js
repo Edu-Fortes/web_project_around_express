@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const isEmail = require("validator/lib/isEmail");
 
 const { Schema, model } = mongoose;
 
@@ -6,20 +7,35 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      default: "Jacques Cousteau",
       minlength: 2,
       maxlength: 30,
     },
     about: {
       type: String,
-      required: true,
+      default: "Explorer",
       minlength: 2,
       maxlength: 30,
     },
     avatar: {
       type: String,
-      required: true,
+      default:
+        "https://practicum-content.s3.us-west-1.amazonaws.com/resources/moved_avatar_1604080799.jpg",
       match: /^https?:\/\/(www\.)?([-.~:/?#[\]@!$&'()*+,;=\w]*#?)/gi,
+    },
+    email: {
+      type: String,
+      require: true,
+      unique: true,
+      validate: {
+        validator: (v) => isEmail(v),
+        message: "Wrong e-mail format",
+      },
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 8,
     },
   },
   { versionKey: false }
